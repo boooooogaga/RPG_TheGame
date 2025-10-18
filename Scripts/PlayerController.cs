@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController characterController;
     [SerializeField] Camera GoCamera;
+    public Sword sword;
 
     private void CameraRotation()
     {
@@ -39,11 +40,17 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         characterController = GetComponent<CharacterController>();
+        
+        
     }
 
     void Update()
     {
         CameraRotation();
         MoveCharacter();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+        }
     }
 }
