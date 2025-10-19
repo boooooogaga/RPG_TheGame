@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d16065cb95a4f418bd42bbcaf56bc7, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  swordName: 
-  damage: 0
-  attackSpeed: 0
-  attackDelay: 0
-  swordSprite: {fileID: 0}
+  swordName: DefSword
+  damage: 10
+  attackSpeed: 1
+  attackDelay: 0.5
+  swordSprite: {fileID: 21300000, guid: a92577390640d934ab253f257376e34f, type: 3}
   attackSound: {fileID: 0}
