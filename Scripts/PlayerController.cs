@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            sword.StartCoroutine(Attack());
         }
     }
 }

@@ -260,7 +260,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GoCamera: {fileID: 963194227}
-  sword: {fileID: 0}
+  sword: {fileID: 502266434}
+--- !u!114 &502266434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502266427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d4025ff4714a7f41ae3b13dfa2a064c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 631.8187, y: -259.68652}
+  m_AnchoredPosition: {x: 681, y: -340}
   m_SizeDelta: {x: 313.4713, y: 560.6312}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1189762979
@@ -749,6 +761,18 @@ PrefabInstance:
     - target: {fileID: 4974484714318587380, guid: c3aff13ccbccae946bd8d17f191181cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064660864784613318, guid: c3aff13ccbccae946bd8d17f191181cd, type: 3}
+      propertyPath: m_Size.z
+      value: 0.7606134
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064660864784613318, guid: c3aff13ccbccae946bd8d17f191181cd, type: 3}
+      propertyPath: m_Center.x
+      value: -0.01728487
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064660864784613318, guid: c3aff13ccbccae946bd8d17f191181cd, type: 3}
+      propertyPath: m_Center.z
+      value: 0.9213259
       objectReference: {fileID: 0}
     - target: {fileID: 8397983859306571508, guid: c3aff13ccbccae946bd8d17f191181cd, type: 3}
       propertyPath: m_Name
