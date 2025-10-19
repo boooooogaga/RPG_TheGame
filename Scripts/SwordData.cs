@@ -5,8 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Items/Sword", fileName = "Sword")]
 public class SwordData : ScriptableObject
 {
-    public int id;
-    public float  damage, weight, knockback, attackDelay, attackTime;
-    public string Name, description;
-    public Sprite icon;
+    public string swordName;
+    public float damage;
+    public float attackSpeed;
+    public float attackDelay;
+    public Sprite swordSprite; // UI-спрайт меча
+    public AudioClip attackSound; // звук удара
 }
