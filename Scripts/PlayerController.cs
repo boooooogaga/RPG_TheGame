@@ -22,7 +22,13 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 velocity = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         velocity = transform.TransformDirection(velocity) * speed; // переводим из глобальной системі координат в локальную
+        if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f) { 
+        
+        }
+        else
+        {
 
+        }
 
 
         if (characterController.isGrounded) VerticalSpeed = 0f;
