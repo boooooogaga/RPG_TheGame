@@ -1,58 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Sword : MonoBehaviour
 {
+    SwordData data;
 
     BoxCollider attackCollider;
 
-
-    [Header("UI Components")]
-    public Image swordUIImage; // картинка меча на экране
-
-    [Header("Sword Settings")]
-    public SwordData currentSword; // текущие данные меча
-
-    private bool canAttack = true;
-
-    private void Start()
+    private void Awake()
     {
         attackCollider = GetComponent<BoxCollider>();
+
         attackCollider.enabled = false;
     }
-    public void Attack()
-    {
-        if (!canAttack) return;
-        StartCoroutine(AttackRoutine());
-    }
 
-    private IEnumerator AttackRoutine()
+    public IEnumerator Attack()
     {
-        canAttack = false;
-
-        yield return new WaitForSeconds(currentSword.attackDelay);
-        Debug.Log($"Атака мечом: {currentSword.swordName}");
+        Debug.Log("Attack");
+        yield return new WaitForSeconds(data.attackDelay);
         attackCollider.enabled = true;
-
-        // Задержка между ударами
-        yield return new WaitForSeconds(currentSword.attackSpeed);
+        yield return new WaitForSeconds(data.attackTime);
         attackCollider.enabled = false;
-        canAttack = true;
     }
 
-    public void Equip(SwordData newSword)
-    {
-        currentSword = newSword;
-        swordUIImage.sprite = newSword.swordSprite;
-        Debug.Log($"Экипирован меч: {newSword.swordName}");
-    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
-        {
-            Destroy(other.gameObject);
-        }
+        Destroy(other.gameObject);
     }
 }
