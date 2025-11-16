@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3572685279652009532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2953278631668860711}
+  m_Layer: 0
+  m_Name: point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2953278631668860711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3572685279652009532}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.358, z: 0.964}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4974484714318587380}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8397983859306571508
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,9 +44,13 @@ GameObject:
   - component: {fileID: 7213446564357580892}
   - component: {fileID: 2953525778771280513}
   - component: {fileID: 5064660864784613318}
+  - component: {fileID: 502266428}
+  - component: {fileID: 502266433}
+  - component: {fileID: 502266434}
+  - component: {fileID: 502266440}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,10 +64,11 @@ Transform:
   m_GameObject: {fileID: 8397983859306571508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 6.962678, y: 6.962678, z: 6.962678}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9207254236302346627}
+  - {fileID: 2953278631668860711}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -111,8 +147,69 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0055587, y: 0.6516618, z: 0.8324356}
-  m_Center: {x: -0.0172849, y: 0.2635565, z: 0.88541484}
+  m_Size: {x: 1.0055587, y: 0.6516618, z: 0.7606134}
+  m_Center: {x: -0.01728487, y: 0.2635565, z: 0.9213259}
+--- !u!143 &502266428
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8397983859306571508}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &502266433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8397983859306571508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be0ebcf4a60c6449a2d51265e2bb879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GoCamera: {fileID: 9207254236302346628}
+  sword: {fileID: 502266434}
+--- !u!114 &502266434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8397983859306571508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d4025ff4714a7f41ae3b13dfa2a064c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordUIImage: {fileID: 0}
+  currentSword: {fileID: 11400000, guid: 241e9369c736c784d901ad87274c9404, type: 2}
+--- !u!114 &502266440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8397983859306571508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbe9fa75863b7840ae32ecc46cba323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireBall: {fileID: 8522824485092410870, guid: d926db9128d590640a01551f76467690, type: 3}
+  FireBallSpawnPos: {fileID: 2953278631668860711}
+  PlayerPos: {fileID: 4974484714318587380}
 --- !u!1 &9207254236302346630
 GameObject:
   m_ObjectHideFlags: 0
