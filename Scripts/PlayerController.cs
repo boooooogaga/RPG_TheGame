@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
      private const float gravityScale = 9.8f,
-                  speed = 8f,
+                  speed = 25f,
                   turnSpeed = 90f;
     private float mouseX = 0f, VerticalSpeed = 0f;
 

@@ -4921,6 +4921,7 @@ GameObject:
   - component: {fileID: 8583147473133907790}
   - component: {fileID: 3315770962075984413}
   - component: {fileID: 1034641953222113641}
+  - component: {fileID: -2764529855654046323}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Untagged
@@ -5050,7 +5051,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -5058,22 +5059,22 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.01079005
-        value: 0.72269076
-        inSlope: 0
-        outSlope: 0
+        time: 0
+        value: 0.2352907
+        inSlope: -0.38142455
+        outSlope: -0.38142455
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.176259
       - serializedVersion: 3
         time: 1
-        value: 0.42856976
-        inSlope: 0
-        outSlope: 0
+        value: 0.025211304
+        inSlope: -0.17092837
+        outSlope: -0.17092837
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.14748204
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -5132,3 +5133,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-2764529855654046323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8522824485092410870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320de941a43075b48b75b488890431f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BallSpeed: 100
