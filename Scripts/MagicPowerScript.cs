@@ -1,43 +1,49 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MagicPowerScript : MonoBehaviour
 {
     [SerializeField] private GameObject fireBall;
-
     [SerializeField] private Transform BallSpawnPos;
 
-    public Sprite IdleArm;
-    public Sprite AttackArm;
+    [SerializeField] private GameObject MagicArmFov;      // обычная рука
+    [SerializeField] private GameObject MagicArmAttack;   // рука которая атакует
 
-    private float AttackCouldown = 0.1f;
-
+    private float AttackCooldown = 0.3f;
     private bool CanAttack = true;
-
-    public Image ArmRenderer;
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
             Attack(fireBall);
-        } 
+        }
     }
+
     private void Attack(GameObject Orb)
     {
         if (!CanAttack) return;
         StartCoroutine(AttackOrb(Orb));
     }
-    private IEnumerator AttackOrb(GameObject SpanwBallPref)
+
+    private IEnumerator AttackOrb(GameObject SpawnBallPrefab)
     {
         CanAttack = false;
-        Instantiate(SpanwBallPref, BallSpawnPos.position, BallSpawnPos.rotation);
-        ArmRenderer.sprite = AttackArm;
-        yield return new WaitForSeconds(AttackCouldown);
-        ArmRenderer.sprite = IdleArm;
+
+        // создаем шар
+        Instantiate(SpawnBallPrefab, BallSpawnPos.position, BallSpawnPos.rotation);
+
+        // включаем руку атаки
+        MagicArmFov.SetActive(false);
+        MagicArmAttack.SetActive(true);
+
+        // ждем кулдаун
+        yield return new WaitForSeconds(AttackCooldown);
+
+        // возвращаем обычную руку
+        MagicArmAttack.SetActive(false);
+        MagicArmFov.SetActive(true);
+
         CanAttack = true;
     }
 }

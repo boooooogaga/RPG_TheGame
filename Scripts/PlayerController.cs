@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private CharacterController characterController;
     [SerializeField] Camera GoCamera;
     public Sword sword;
+    public Animator AnimForLeftArm;
+    public Animator AnimForRightArm;
 
     private void CameraRotation()
     {
@@ -22,12 +24,15 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 velocity = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         velocity = transform.TransformDirection(velocity) * speed; // переводим из глобальной системі координат в локальную
-        if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f) { 
-        
+        if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
+        {
+            AnimForLeftArm.SetBool("IsRun", true);
+            AnimForRightArm.SetBool("IsRun", true);
         }
         else
         {
-
+            AnimForLeftArm.SetBool("IsRun", false);
+            AnimForRightArm.SetBool("IsRun", false);
         }
 
 

@@ -1,3 +1,4 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class Sword : MonoBehaviour
 
     BoxCollider attackCollider;
 
+    Animator anim;
 
     [Header("UI Components")]
     public Image swordUIImage; // картинка меча на экране
@@ -21,6 +23,8 @@ public class Sword : MonoBehaviour
     {
         attackCollider = GetComponent<BoxCollider>();
         attackCollider.enabled = false;
+
+        anim = GetComponent<Animator>();
     }
     public void Attack()
     {
@@ -31,8 +35,17 @@ public class Sword : MonoBehaviour
     private IEnumerator AttackRoutine()
     {
         canAttack = false;
+        if (!canAttack)
+        {
+            anim.SetBool("Swing", true);
+        }
+        else
+        {
+            anim.SetBool("Swing", false);
+        }
 
         yield return new WaitForSeconds(currentSword.attackDelay);
+       
         Debug.Log($"Атака мечом: {currentSword.swordName}");
         attackCollider.enabled = true;
 
