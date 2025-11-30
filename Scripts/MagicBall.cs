@@ -7,7 +7,7 @@ public class MagicBall : MonoBehaviour
     private Rigidbody BallRB;
     public float BallSpeed;
     [SerializeField] private float SpreadCoof;
-    [SerializeField] GameObject FireParticle;
+    [SerializeField] GameObject FireParticle, FireSprite;
 
     void Start()
     {
@@ -19,5 +19,9 @@ public class MagicBall : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(gameObject);
+    }
+    void LateUpdate()
+    {
+        FireSprite.transform.LookAt(Camera.main.transform);
     }
 }
