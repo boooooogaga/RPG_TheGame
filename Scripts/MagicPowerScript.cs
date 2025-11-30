@@ -1,15 +1,22 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MagicPowerScript : MonoBehaviour
 {
     [SerializeField] private GameObject fireBall;
     [SerializeField] private Transform BallSpawnPos;
 
-    [SerializeField] private GameObject MagicArmFov;      // обычная рука
-    [SerializeField] private GameObject MagicArmAttack;   // рука которая атакует
+    [SerializeField] private Sprite MagicArmIdle;      // обычная рука
+    [SerializeField] private Sprite MagicArmAttack;   // рука которая атакует
+    [SerializeField] private Sprite MagicArmCD; //Рука в кд
 
-    private float AttackCooldown = 0.3f;
+
+    [SerializeField] private Image MagicArmFov;
+    [SerializeField] private GameObject FireBallSprite;
+
+
+    private float AttackCooldown = 0.3f, OrbCooldown = 5f;
     private bool CanAttack = true;
 
     private void Update()
@@ -34,15 +41,21 @@ public class MagicPowerScript : MonoBehaviour
         Instantiate(SpawnBallPrefab, BallSpawnPos.position, BallSpawnPos.rotation);
 
         // включаем руку атаки
-        MagicArmFov.SetActive(false);
-        MagicArmAttack.SetActive(true);
+        MagicArmFov.sprite = MagicArmAttack;
+        FireBallSprite.SetActive(false);
 
         // ждем кулдаун
         yield return new WaitForSeconds(AttackCooldown);
 
-        // возвращаем обычную руку
-        MagicArmAttack.SetActive(false);
-        MagicArmFov.SetActive(true);
+        // возвращаем руку в кд
+        MagicArmFov.sprite = MagicArmCD;
+
+        yield return new WaitForSeconds(OrbCooldown);
+
+        // возвращаем руку в Idle
+
+        MagicArmFov.sprite = MagicArmIdle;
+        FireBallSprite.SetActive(true);
 
         CanAttack = true;
     }

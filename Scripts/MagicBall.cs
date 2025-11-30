@@ -5,13 +5,16 @@ using UnityEngine;
 public class MagicBall : MonoBehaviour
 {
     private Rigidbody BallRB;
-    public float BallSpeed = 5000f;
-    
+    public float BallSpeed;
+    [SerializeField] private float SpreadCoof;
+    [SerializeField] GameObject FireParticle;
 
     void Start()
     {
+        Vector3 OrbSpread = new Vector3(Random.Range(-SpreadCoof,SpreadCoof),Random.Range(-SpreadCoof/2,SpreadCoof/2),0);
         BallRB = GetComponent<Rigidbody>();
-        BallRB.AddForce(transform.forward * BallSpeed, ForceMode.Impulse);
+        FireParticle.transform.rotation = Quaternion.LookRotation(-(OrbSpread + transform.forward));
+        BallRB.AddForce((transform.forward + OrbSpread) * BallSpeed, ForceMode.Impulse);
     }
     private void OnCollisionEnter(Collision collision)
     {

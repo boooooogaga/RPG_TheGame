@@ -35,15 +35,6 @@ public class Sword : MonoBehaviour
     private IEnumerator AttackRoutine()
     {
         canAttack = false;
-        if (!canAttack)
-        {
-            anim.SetBool("Swing", true);
-        }
-        else
-        {
-            anim.SetBool("Swing", false);
-        }
-
         yield return new WaitForSeconds(currentSword.attackDelay);
        
         Debug.Log($"Атака мечом: {currentSword.swordName}");
