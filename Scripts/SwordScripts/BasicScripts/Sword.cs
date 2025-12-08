@@ -1,18 +1,18 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
 
-public class Sword : MonoBehaviour
+public class Sword : MonoBehaviour, IUsable
 {
-
     BoxCollider attackCollider;
+
+    [SerializeField] GameObject Player;
 
     Animator anim;
 
     [Header("UI Components")]
-    public Image swordUIImage; // картинка меча на экране
+    public Image ArmImage; // картинка меча на экране
 
     [Header("Sword Settings")]
     public SwordData currentSword; // текущие данные меча
@@ -21,6 +21,7 @@ public class Sword : MonoBehaviour
 
     private void Start()
     {
+
         attackCollider = GetComponent<BoxCollider>();
         attackCollider.enabled = false;
 
@@ -36,8 +37,11 @@ public class Sword : MonoBehaviour
     {
         canAttack = false;
         yield return new WaitForSeconds(currentSword.attackDelay);
-       
-        Debug.Log($"Атака мечом: {currentSword.swordName}");
+
+        foreach (var behaviour in currentSword.behaviours)
+            behaviour.OnUsePlayerEffect(Player);
+        
+        Debug.Log($"Атака мечом: {currentSword.Name}");
         attackCollider.enabled = true;
 
         // Задержка между ударами
@@ -49,8 +53,8 @@ public class Sword : MonoBehaviour
     public void Equip(SwordData newSword)
     {
         currentSword = newSword;
-        swordUIImage.sprite = newSword.swordSprite;
-        Debug.Log($"Экипирован меч: {newSword.swordName}");
+        ArmImage.sprite = newSword.FovSprite;
+        Debug.Log($"Экипирован меч: {newSword.Name}");
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -59,4 +63,13 @@ public class Sword : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+    public Sprite GetFovSprite()
+    {
+        return currentSword.FovSprite;
+    }
+    public void Use()
+    {
+        Attack();
+    }
+ 
 }

@@ -59,10 +59,5 @@ public class PlayerController : MonoBehaviour
     {
         CameraRotation();
         MoveCharacter();
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            sword.Attack();
-        }
     }
 }
