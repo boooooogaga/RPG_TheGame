@@ -12,7 +12,7 @@ public class Sword : MonoBehaviour, IUsable
     Animator anim;
 
     [Header("Sword Settings")]
-    public SwordData currentSword; // текущие данные меча
+    public SwordData currentSword; // текущие данные меча либо же обьект меча (Scriptbleobject)
 
     private bool canAttack = true;
 
@@ -24,13 +24,13 @@ public class Sword : MonoBehaviour, IUsable
 
         anim = GetComponent<Animator>();
     }
-    public void Attack()
+    public void Attack() // просто функци€ котора€ вызывает коротину
     {
         if (!canAttack) return;
         StartCoroutine(AttackRoutine());
     }
 
-    private IEnumerator AttackRoutine()
+    private IEnumerator AttackRoutine() // основна€ корутина дл€ атаки
     {
         canAttack = false;
         yield return new WaitForSeconds(currentSword.attackDelay);
@@ -47,7 +47,7 @@ public class Sword : MonoBehaviour, IUsable
         canAttack = true;
     }
 
-    public void Equip(SwordData newSword)
+    public void Equip(SwordData newSword) 
     {
         currentSword = newSword;
         Debug.Log($"Ёкипирован меч: {newSword.Name}");
@@ -59,11 +59,11 @@ public class Sword : MonoBehaviour, IUsable
             Destroy(other.gameObject);
         }
     }
-    public Sprite GetFovSprite()
+    public Sprite GetFovSprite() //дл€ прогрузки спрайта в руке в скрипте "UseOfItems"
     {
         return currentSword.FovSprite;
     }
-    public void Use()
+    public void Use() //дл€ испозьзовани€ предметов в руке
     {
         Attack();
     }
