@@ -19,4 +19,8 @@ public class Poison : MonoBehaviour, IUsable
     {
 
     }
+    public Sprite GetFovSprite()
+    {
+        return null;
+    }
 }

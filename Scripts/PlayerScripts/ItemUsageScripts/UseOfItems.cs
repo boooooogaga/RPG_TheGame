@@ -5,6 +5,7 @@ public class UseOfItems : MonoBehaviour
 {
     public IUsable itemInHand;
     private Sword sword;
+    [SerializeField] private Image ArmFov;
     private void Start()
     {
         sword = GetComponent<Sword>();
@@ -13,6 +14,7 @@ public class UseOfItems : MonoBehaviour
     public void Equip(IUsable item)
     {
         itemInHand = item; 
+        ArmFov.sprite = itemInHand.GetFovSprite();
     }
 
     void Update()

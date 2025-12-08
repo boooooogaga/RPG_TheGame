@@ -11,9 +11,6 @@ public class Sword : MonoBehaviour, IUsable
 
     Animator anim;
 
-    [Header("UI Components")]
-    public Image ArmImage; // картинка меча на экране
-
     [Header("Sword Settings")]
     public SwordData currentSword; // текущие данные меча
 
@@ -53,7 +50,6 @@ public class Sword : MonoBehaviour, IUsable
     public void Equip(SwordData newSword)
     {
         currentSword = newSword;
-        ArmImage.sprite = newSword.FovSprite;
         Debug.Log($"Ёкипирован меч: {newSword.Name}");
     }
     private void OnTriggerEnter(Collider other)
@@ -71,5 +67,4 @@ public class Sword : MonoBehaviour, IUsable
     {
         Attack();
     }
- 
 }
