@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Poison : MonoBehaviour, IUsable
 {
-    // Start is called before the first frame update
+    public PoisonData currentPoison;
+    private int HP = 10;
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -17,10 +17,12 @@ public class Poison : MonoBehaviour, IUsable
     }
     public void Use()
     {
-
+        HP++;
+        Debug.Log("Выпил зелье");
     }
     public Sprite GetFovSprite()
     {
-        return null;
+        return currentPoison.FovSprite;
     }
+    
 }

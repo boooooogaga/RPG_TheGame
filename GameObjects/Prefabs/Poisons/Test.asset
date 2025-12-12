@@ -9,16 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d16065cb95a4f418bd42bbcaf56bc7, type: 3}
-  m_Name: Sword
+  m_Script: {fileID: 11500000, guid: 5b60a6f65c8eae74092b90dc9aa11b35, type: 3}
+  m_Name: Test
   m_EditorClassIdentifier: 
   Name: 
   Description: 
   InventorySprite: {fileID: 0}
-  FovSprite: {fileID: 21300000, guid: d97d3a84833bb044d9d1d8e7e09bc10d, type: 3}
+  FovSprite: {fileID: 21300000, guid: 61c4e41c774593049ae73a9d6c335c65, type: 3}
   UsageSound: {fileID: 0}
   EquipSound: {fileID: 0}
-  damage: 30
-  attackSpeed: 1
-  attackDelay: 2
   behaviours: []

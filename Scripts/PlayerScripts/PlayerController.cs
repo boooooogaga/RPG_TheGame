@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController characterController;
     [SerializeField] Camera GoCamera;
-    public Sword sword;
+
     public Animator AnimForLeftArm;
     public Animator AnimForRightArm;
 

@@ -5,9 +5,11 @@ public class UseOfItems : MonoBehaviour
 {
     public IUsable itemInHand;
     private Sword sword;
+    private Poison poison;
     [SerializeField] private Image ArmFov;
     private void Start()
     {
+        poison = GetComponent<Poison>();
         sword = GetComponent<Sword>();
         Equip(sword);
     }
@@ -21,6 +23,18 @@ public class UseOfItems : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
             itemInHand?.Use();
+        if (Input.GetKeyDown("f"))
+        {
+            Equip(poison);
+            Debug.Log("Зелье в руке");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            sword.SwordSwap();
+            Equip(sword);
+            Debug.Log("Меч в руке");
+        }
+       
     }
    
 }

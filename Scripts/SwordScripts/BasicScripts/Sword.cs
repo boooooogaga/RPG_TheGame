@@ -10,15 +10,17 @@ public class Sword : MonoBehaviour, IUsable
     [SerializeField] GameObject Player;
 
     Animator anim;
-
+    AudioSource PlayerAudio;
     [Header("Sword Settings")]
     public SwordData currentSword; // текущие данные меча либо же обьект меча (Scriptbleobject)
 
     private bool canAttack = true;
 
+    public SwordData[] Swords = new SwordData[3];
+
     private void Start()
     {
-
+        PlayerAudio = GetComponent<AudioSource>();
         attackCollider = GetComponent<BoxCollider>();
         attackCollider.enabled = false;
 
@@ -37,6 +39,8 @@ public class Sword : MonoBehaviour, IUsable
 
         foreach (var behaviour in currentSword.behaviours)
             behaviour.OnUsePlayerEffect(Player);
+
+        PlayerAudio.PlayOneShot(currentSword.UsageSound);
         
         Debug.Log($"јтака мечом: {currentSword.Name}");
         attackCollider.enabled = true;
@@ -47,7 +51,7 @@ public class Sword : MonoBehaviour, IUsable
         canAttack = true;
     }
 
-    public void Equip(SwordData newSword) 
+    public void EquipSwordSlot(SwordData newSword) 
     {
         currentSword = newSword;
         Debug.Log($"Ёкипирован меч: {newSword.Name}");
@@ -67,4 +71,11 @@ public class Sword : MonoBehaviour, IUsable
     {
         Attack();
     }
+    public void SwordSwap()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) { EquipSwordSlot(Swords[0]); GetFovSprite(); }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) { EquipSwordSlot(Swords[1]); GetFovSprite(); }
+        if (Input.GetKeyDown(KeyCode.Alpha3)) { EquipSwordSlot(Swords[2]); GetFovSprite(); }
+    }
+
 }

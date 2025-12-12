@@ -6,7 +6,9 @@ public class ItemData : ScriptableObject // общий класс для предметов
 {
     public string Name;
     public string Description;
+    public int Rarity;
     public Sprite InventorySprite; // UI-спрайт для инвентаря
     public Sprite FovSprite;  // UI-спрайт для вида с руки, либо для иконки если это снаряга
     public AudioClip UsageSound; // звук использования
+    public AudioClip EquipSound;
 }
