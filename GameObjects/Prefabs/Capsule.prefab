@@ -50,7 +50,6 @@ GameObject:
   - component: {fileID: 502266440}
   - component: {fileID: 552688945}
   - component: {fileID: 552688946}
-  - component: {fileID: 552688934}
   - component: {fileID: 552688935}
   m_Layer: 0
   m_Name: Capsule
@@ -184,7 +183,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GoCamera: {fileID: 9207254236302346628}
-  sword: {fileID: 502266434}
   AnimForLeftArm: {fileID: 0}
   AnimForRightArm: {fileID: 0}
 --- !u!114 &502266434
@@ -201,6 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 8397983859306571508}
   currentSword: {fileID: 11400000, guid: 25f2a58b7d55ffa438c3dab4d8fad591, type: 2}
+  Swords: []
 --- !u!114 &502266440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,19 +411,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &552688934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8397983859306571508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a53fa5e9820ecf43a178b48edfeac07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Compass: {fileID: 0}
 --- !u!114 &552688935
 MonoBehaviour:
   m_ObjectHideFlags: 0

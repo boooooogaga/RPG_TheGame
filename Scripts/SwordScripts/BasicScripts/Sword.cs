@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class Sword : MonoBehaviour, IUsable
 {
     BoxCollider attackCollider;
-
+    [Header("Inventory")]
+    private Inventory inventory;
     [SerializeField] GameObject Player;
 
     Animator anim;
     AudioSource PlayerAudio;
-    [Header("Sword Settings")]
     public SwordData currentSword; // текущие данные меча либо же обьект меча (Scriptbleobject)
 
     private bool canAttack = true;
@@ -23,7 +23,7 @@ public class Sword : MonoBehaviour, IUsable
         PlayerAudio = GetComponent<AudioSource>();
         attackCollider = GetComponent<BoxCollider>();
         attackCollider.enabled = false;
-
+        inventory = gameObject.GetComponent<Inventory>();
         anim = GetComponent<Animator>();
     }
     public void Attack() // просто функция которая вызывает коротину
@@ -77,5 +77,8 @@ public class Sword : MonoBehaviour, IUsable
         if (Input.GetKeyDown(KeyCode.Alpha2)) { EquipSwordSlot(Swords[1]); GetFovSprite(); }
         if (Input.GetKeyDown(KeyCode.Alpha3)) { EquipSwordSlot(Swords[2]); GetFovSprite(); }
     }
-
+    void Update()
+    {
+        Swords = inventory.Swords;
+    }
 }

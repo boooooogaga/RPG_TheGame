@@ -6,4 +6,5 @@ public class Inventory : MonoBehaviour
 {
     public SwordData[] Swords = new SwordData[3];
     public ChestData currentChest;
+    public PoisonData currentPoison;
 }
