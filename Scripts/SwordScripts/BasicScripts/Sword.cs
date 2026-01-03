@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Sword : MonoBehaviour, IUsable
 {
+    public Animator AnimForRightArm;
     BoxCollider attackCollider;
     [Header("Inventory")]
     private Inventory inventory;
@@ -30,7 +31,8 @@ public class Sword : MonoBehaviour, IUsable
     {
         if (!canAttack) return;
         StartCoroutine(AttackRoutine());
-    }
+        AnimForRightArm.SetTrigger("Attack");
+}
 
     private IEnumerator AttackRoutine() // основная корутина для атаки
     {
