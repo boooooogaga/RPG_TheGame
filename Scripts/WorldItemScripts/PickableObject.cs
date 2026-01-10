@@ -1,0 +1,29 @@
+using UnityEngine;
+using static UnityEditor.Progress;
+
+public class PickableItem : MonoBehaviour, IInteractable
+{
+    [SerializeField] private ItemData item;
+    [SerializeField] private GameObject highlight;
+
+    public void OnFocus()
+    {
+        if (highlight != null)
+            highlight.SetActive(true);
+    }
+
+    public void OnUnfocus()
+    {
+        if (highlight != null)
+            highlight.SetActive(false);
+    }
+
+    public void Interact(GameObject interactor)
+    {
+        Inventory inventory = interactor.GetComponent<Inventory>();
+        if (inventory == null) return;
+
+        inventory.AddItem(item);
+        Destroy(gameObject);
+    }
+}
