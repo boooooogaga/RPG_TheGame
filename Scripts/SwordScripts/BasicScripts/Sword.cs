@@ -16,7 +16,8 @@ public class Sword : MonoBehaviour, IUsable
     public SwordData currentSword; // текущие данные меча либо же обьект меча (Scriptbleobject)
 
     private bool canAttack = true;
-
+    private bool canSwap = true;
+    private int currentSlot = 1;
     public SwordData[] Swords = new SwordData[3];
 
     private void Start()
@@ -37,6 +38,7 @@ public class Sword : MonoBehaviour, IUsable
     private IEnumerator AttackRoutine() // основная корутина для атаки
     {
         canAttack = false;
+        canSwap = false;
         yield return new WaitForSeconds(currentSword.attackDelay);
 
         foreach (var behaviour in currentSword.behaviours)
@@ -51,6 +53,7 @@ public class Sword : MonoBehaviour, IUsable
         yield return new WaitForSeconds(currentSword.attackSpeed);
         attackCollider.enabled = false;
         canAttack = true;
+        canSwap = true;
     }
 
     public void EquipSwordSlot(SwordData newSword) 
@@ -73,12 +76,23 @@ public class Sword : MonoBehaviour, IUsable
     {
         Attack();
     }
-    public void SwordSwap()
+    private IEnumerator SwordSwap()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { EquipSwordSlot(Swords[0]); GetFovSprite(); }
-        if (Input.GetKeyDown(KeyCode.Alpha2)) { EquipSwordSlot(Swords[1]); GetFovSprite(); }
-        if (Input.GetKeyDown(KeyCode.Alpha3)) { EquipSwordSlot(Swords[2]); GetFovSprite(); }
+        if (canSwap)
+        {
+            canSwap = false;
+            canAttack = false;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) && currentSlot != 1) { EquipSwordSlot(Swords[0]); GetFovSprite(); currentSlot = 1; AnimForRightArm.Play("RightArmEquipSword", 0, 0f); }
+                else if(Input.GetKeyDown(KeyCode.Alpha2) && currentSlot != 2) { EquipSwordSlot(Swords[1]); GetFovSprite(); currentSlot = 2; AnimForRightArm.Play("RightArmEquipSword", 0, 0f); }
+                else if(Input.GetKeyDown(KeyCode.Alpha3) && currentSlot != 3) { EquipSwordSlot(Swords[2]); GetFovSprite(); currentSlot = 3; AnimForRightArm.Play("RightArmEquipSword", 0, 0f); }
+
+                yield return new WaitForSeconds(1);
+            canAttack = true;
+            canSwap = true;
+        }
     }
+    public void EquipSword() { StartCoroutine(SwordSwap()); }
     void Update()
     {
         Swords = inventory.Swords;
