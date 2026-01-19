@@ -2175,6 +2175,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1189762981}
     - target: {fileID: 502266434, guid: c3aff13ccbccae946bd8d17f191181cd, type: 3}
+      propertyPath: currentSword
+      value: 
+      objectReference: {fileID: 11400000, guid: 25f2a58b7d55ffa438c3dab4d8fad591, type: 2}
+    - target: {fileID: 502266434, guid: c3aff13ccbccae946bd8d17f191181cd, type: 3}
       propertyPath: AnimForRightArm
       value: 
       objectReference: {fileID: 1189762981}
