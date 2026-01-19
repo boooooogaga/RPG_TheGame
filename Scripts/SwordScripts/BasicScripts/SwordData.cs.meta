@@ -3,7 +3,13 @@ guid: b9d16065cb95a4f418bd42bbcaf56bc7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - InventorySprite: {instanceID: 0}
+  - FovSprite: {instanceID: 0}
+  - UsageSound: {fileID: 8300000, guid: eed48c0e5cfe8d742bc31d91ac5069cf, type: 3}
+  - EquipSound: {fileID: 8300000, guid: c4daeced34884f648b5a5cbdecc6adb4, type: 3}
+  - EquipAnimation: {fileID: 7400000, guid: 36e3b72c3b9bc9747a87ac6bf512c8b4, type: 2}
+  - AttackAnimation: {fileID: 7400000, guid: 4cba2dcf9621ec0439a7da5ac46cabce, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

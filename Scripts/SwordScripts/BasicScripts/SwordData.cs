@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Items/Sword", fileName = "Sword")]
 public class SwordData : ItemData // тут ничего писать не нужно, класс для создания мечей через скриптбл обджект
 {
+    public AnimationClip EquipAnimation;
+    public AnimationClip AttackAnimation;
     public float damage;
     public float attackSpeed;
     public float attackDelay;
