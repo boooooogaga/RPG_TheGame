@@ -22,8 +22,11 @@ public class PickableItem : MonoBehaviour, IInteractable
     {
         Inventory inventory = interactor.GetComponent<Inventory>();
         if (inventory == null) return;
-
-        inventory.AddItem(item);
         Destroy(gameObject);
+    }
+
+    private void Update()
+    {
+        transform.LookAt(Camera.main.transform);
     }
 }

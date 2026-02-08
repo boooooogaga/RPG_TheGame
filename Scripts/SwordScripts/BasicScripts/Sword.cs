@@ -23,7 +23,7 @@ public class Sword : MonoBehaviour, IUsable
     private void Start()
     {
         PlayerAudio = GetComponent<AudioSource>();
-        attackCollider = GetComponent<BoxCollider>();
+        attackCollider = GetComponentInChildren<BoxCollider>();
         attackCollider.enabled = false;
         inventory = gameObject.GetComponent<Inventory>();
         anim = GetComponent<Animator>();

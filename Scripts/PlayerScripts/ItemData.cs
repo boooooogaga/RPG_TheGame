@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemData : ScriptableObject // общий класс для предметов
 {
+    public GameObject worldPrefab;
     public string Name;
     public string Description;
     public int Rarity;

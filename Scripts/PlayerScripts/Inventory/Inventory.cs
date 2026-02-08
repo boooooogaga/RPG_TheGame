@@ -8,19 +8,18 @@ public class Inventory : MonoBehaviour
     public ChestData currentChest;
     public PoisonData currentPoison;
 
-    public void AddItem(ItemData item)
+    public void AddSword(SwordData sword)
     {
-        if (item is SwordData sword)
+        for (int i = 0; i < Swords.Length;  i++)
         {
-            return;
+            if (Swords[i] == null) Swords[i] = sword;
         }
-        if (item is PoisonData poison)
-        {
-            return;
-        }
-        if (item is ChestData chest)
-        {
-            return;
+    }
+    public void AddChest(ChestData chest)
+    {
+        if (currentChest == null) currentChest = chest;
+        else { Instantiate(currentChest.worldPrefab, transform.position + transform.forward, Quaternion.identity);
+               currentChest = chest;
         }
     }
 }

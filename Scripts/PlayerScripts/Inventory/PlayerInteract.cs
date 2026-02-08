@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] private Camera cam;
-    [SerializeField] private float interactDistance = 3f;
+    [SerializeField] private float interactDistance;
 
     private IInteractable currentTarget;
 
@@ -13,7 +13,7 @@ public class PlayerInteract : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance))
         {
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            IInteractable interactable = hit.collider.GetComponentInParent<IInteractable>();
 
             if (interactable != currentTarget)
             {
@@ -23,15 +23,17 @@ public class PlayerInteract : MonoBehaviour
             }
 
             if (Input.GetKeyDown(KeyCode.E) && currentTarget != null)
-            {
-                Inventory inventory = GetComponent<Inventory>();
+            { 
                 currentTarget.Interact(gameObject);
             }
+            Debug.Log(hit.collider.gameObject.name);
         }
         else
         {
             currentTarget?.OnUnfocus();
             currentTarget = null;
         }
+        
+
     }
 }
