@@ -26,7 +26,6 @@ public class PlayerInteract : MonoBehaviour
             { 
                 currentTarget.Interact(gameObject);
             }
-            Debug.Log(hit.collider.gameObject.name);
         }
         else
         {

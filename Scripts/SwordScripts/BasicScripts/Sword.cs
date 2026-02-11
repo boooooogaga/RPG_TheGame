@@ -13,11 +13,11 @@ public class Sword : MonoBehaviour, IUsable
 
     Animator anim;
     AudioSource PlayerAudio;
-    public SwordData currentSword; // текущие данные меча либо же обьект меча (Scriptbleobject)
+    public SwordData currentSword; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (Scriptbleobject)
 
     private bool canAttack = true;
     private bool canSwap = true;
-    private int currentSlot = 1;
+    public int currentSlot = 1;
     public SwordData[] Swords = new SwordData[3];
 
     private void Start()
@@ -28,14 +28,14 @@ public class Sword : MonoBehaviour, IUsable
         inventory = gameObject.GetComponent<Inventory>();
         anim = GetComponent<Animator>();
     }
-    public void Attack() // просто функция которая вызывает коротину
+    public void Attack() // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     {
         if (!canAttack) return;
         StartCoroutine(AttackRoutine());
         AnimForRightArm.SetTrigger("Attack");
 }
 
-    private IEnumerator AttackRoutine() // основная корутина для атаки
+    private IEnumerator AttackRoutine() // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     {
         canAttack = false;
         canSwap = false;
@@ -46,10 +46,10 @@ public class Sword : MonoBehaviour, IUsable
 
         PlayerAudio.PlayOneShot(currentSword.UsageSound);
         
-        Debug.Log($"Атака мечом: {currentSword.Name}");
+        Debug.Log($"пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ: {currentSword.Name}");
         attackCollider.enabled = true;
 
-        // Задержка между ударами
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         yield return new WaitForSeconds(currentSword.attackSpeed);
         attackCollider.enabled = false;
         canAttack = true;
@@ -59,7 +59,7 @@ public class Sword : MonoBehaviour, IUsable
     public void EquipSwordSlot(SwordData newSword) 
     {
         currentSword = newSword;
-        Debug.Log($"Экипирован меч: {newSword.Name}");
+        Debug.Log($"пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ: {newSword.Name}");
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -68,11 +68,11 @@ public class Sword : MonoBehaviour, IUsable
             Destroy(other.gameObject);
         }
     }
-    public Sprite GetFovSprite() //для прогрузки спрайта в руке в скрипте "UseOfItems"
+    public Sprite GetFovSprite() //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ "UseOfItems"
     {
         return currentSword.FovSprite;
     }
-    public void Use() //для испозьзования предметов в руке
+    public void Use() //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
     {
         Attack();
     }
