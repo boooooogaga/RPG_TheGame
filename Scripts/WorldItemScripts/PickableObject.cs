@@ -6,6 +6,7 @@ public class PickableItem : MonoBehaviour, IInteractable
     [SerializeField] private ItemData item;
     [SerializeField] private GameObject highlight;
 
+
     public void OnFocus()
     {
         if (highlight != null)
@@ -25,8 +26,9 @@ public class PickableItem : MonoBehaviour, IInteractable
         Destroy(gameObject);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        transform.LookAt(Camera.main.transform);
+        transform.forward = Camera.main.transform.forward;
     }
+
 }

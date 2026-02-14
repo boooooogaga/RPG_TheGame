@@ -61,16 +61,7 @@ public class Sword : MonoBehaviour, IUsable
         currentSword = newSword;
         Debug.Log($"���������� ���: {newSword.Name}");
     }
-    public void ProcessTrigger(string zoneName,Collider other) 
-    {
-        if (other.CompareTag("Enemy")) 
-        {
-            Debug.Log("Враг попал в зону:");
-            EnemyBody = other.GetComponent<BodyData>();
-            if(EnemyBody != null) EnemyBody.TakeDamage(50);
-            Destroy(other.gameObject);
-        }
-}    public Sprite GetFovSprite() //��� ��������� ������� � ���� � ������� "UseOfItems"
+   public Sprite GetFovSprite() //��� ��������� ������� � ���� � ������� "UseOfItems"
     {
         return currentSword.FovSprite;
     }

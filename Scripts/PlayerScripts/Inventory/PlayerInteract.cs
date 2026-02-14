@@ -7,7 +7,7 @@ public class PlayerInteract : MonoBehaviour
 
     private IInteractable currentTarget;
 
-    void Update()
+    void LateUpdate()
     {
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
 

@@ -10,9 +10,28 @@ public class TriggerProxy : MonoBehaviour
     {
         mainScript = GetComponentInParent<Sword>();
     }
-    private void OnTriggerEnter(Collider other) 
+    public void ProcessTrigger(string zoneName, Collider other) 
     {
-        // Передаем информацию в главный скрипт
-        mainScript.ProcessTrigger(zoneName, other);
+        // 1. Проверяем, что это точно враг, а не мы сами
+        if (other.CompareTag("Enemy") && other.transform.root != transform.root)
+        {
+            BodyData enemyData = other.GetComponent<BodyData>();
+            
+            if(enemyData != null) 
+            {
+                enemyData.TakeDamage(50);
+                Debug.Log($"Нанесено 50 урона объекту: {other.name}");
+                
+                // Если HP упало до 0 — удаляем
+                if(enemyData.CurrenHealth <= 0) 
+                {
+                    Destroy(other.gameObject);
+                }
+            }
+        }
     }
+    public void OnTriggerEnter(Collider other)
+        {
+            ProcessTrigger( "-" , other);
+        }
 }

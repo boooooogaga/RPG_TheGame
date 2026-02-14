@@ -55,15 +55,7 @@ public class PlayerController : MonoBehaviour
         
         
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        body = GetComponent<BodyData>();
-        if (other.CompareTag("Enemy"))
-        {
-        body.TakeDamage(50);
-        Debug.Log("Damage via Trigger");
-        }   
-    }
+    
     void Update()
     {
         CameraRotation();

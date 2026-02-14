@@ -13,6 +13,7 @@ public class UIControl : MonoBehaviour
     [SerializeField] public Image HPbar;
     [SerializeField] public Image HPbarEffect;
     [SerializeField] public GameObject Player;
+
      public GameObject[] InventorySlots = new GameObject[3];
      public Image[] SwordItems = new Image[3];
 
@@ -47,7 +48,7 @@ public class UIControl : MonoBehaviour
     }
     private void HPUpdate()
     {
-        HPbar.transform.localScale = new Vector3(0.5f, ((float)body.CurrenHealth / (float)body.HPMax)/2, 0.5f);
+        HPbar.transform.localScale = new Vector3(2.5f, (((float)body.CurrenHealth  / (float)body.HPMax ) / 2) * 5, 2.5f);
             Vector3 currentScale = HPbarEffect.transform.localScale;
             float targetY = HPbar.transform.localScale.y;
 
