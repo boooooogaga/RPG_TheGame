@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 4974484714318587380}
   - component: {fileID: 5241421598334522313}
   - component: {fileID: 7213446564357580892}
-  - component: {fileID: 2953525778771280513}
   - component: {fileID: 502266428}
   - component: {fileID: 502266433}
   - component: {fileID: 502266434}
@@ -105,6 +104,8 @@ GameObject:
   - component: {fileID: 552688956}
   - component: {fileID: 552688969}
   - component: {fileID: 1764367480550467842}
+  - component: {fileID: 5709777553264246003}
+  - component: {fileID: 1070167093056481667}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -180,29 +181,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2953525778771280513
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8397983859306571508}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &502266428
 CharacterController:
   m_ObjectHideFlags: 0
@@ -259,6 +237,7 @@ MonoBehaviour:
   AnimForRightArm: {fileID: 0}
   Player: {fileID: 8397983859306571508}
   currentSword: {fileID: 11400000, guid: 25f2a58b7d55ffa438c3dab4d8fad591, type: 2}
+  currentSlot: 1
   Swords: []
 --- !u!114 &502266440
 MonoBehaviour:
@@ -416,7 +395,7 @@ MonoBehaviour:
   Swords:
   - {fileID: 11400000, guid: 36dc53e54f3403140afdc8bfd48d57ce, type: 2}
   - {fileID: 11400000, guid: 25f2a58b7d55ffa438c3dab4d8fad591, type: 2}
-  - {fileID: 11400000, guid: 8933db3ecf4f102438a6b97d9adbc5a0, type: 2}
+  - {fileID: 11400000, guid: 36dc53e54f3403140afdc8bfd48d57ce, type: 2}
   currentChest: {fileID: 11400000, guid: 6f4e55e6334f0ab45afc5faba2b8fa2d, type: 2}
   currentPoison: {fileID: 11400000, guid: 74524b206a06991458b0b6f3a7c024d8, type: 2}
 --- !u!114 &1764367480550467842
@@ -432,7 +411,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 9207254236302346628}
-  interactDistance: 3
+  interactDistance: 15
+--- !u!114 &5709777553264246003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8397983859306571508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180c66a65a2ce6a4383fc8c549497e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPMax: 400
+  TemporaryHealth: 0
+  CurrenHealth: 0
+  Strength: 15
+  Dexterity: 10
+  Itelligence: 10
+  lvl: 1
+--- !u!54 &1070167093056481667
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8397983859306571508}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &9207254236302346630
 GameObject:
   m_ObjectHideFlags: 0

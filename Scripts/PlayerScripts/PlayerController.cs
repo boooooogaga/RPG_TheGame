@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
      private const float gravityScale = 9.8f,
-                  speed = 25f,
+                  speed = 50f,
                   turnSpeed = 90f;
     private float mouseX = 0f, VerticalSpeed = 0f;
-
+    BodyData body;
     private CharacterController characterController;
     [SerializeField] Camera GoCamera;
 
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private void MoveCharacter()
     {
         Vector3 velocity = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        velocity = transform.TransformDirection(velocity) * speed; // переводим из глобальной системі координат в локальную
+        velocity = transform.TransformDirection(velocity) * speed; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
         {
             AnimForLeftArm.SetBool("IsRun", true);
@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
         characterController.Move(velocity * Time.deltaTime);
     }
+
     void Start()
     {
         Cursor.visible = false;
@@ -54,10 +55,19 @@ public class PlayerController : MonoBehaviour
         
         
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        body = GetComponent<BodyData>();
+        if (other.CompareTag("Enemy"))
+        {
+        body.TakeDamage(50);
+        Debug.Log("Damage via Trigger");
+        }   
+    }
     void Update()
     {
         CameraRotation();
         MoveCharacter();
     }
+
 }

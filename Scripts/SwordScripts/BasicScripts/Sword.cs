@@ -10,7 +10,7 @@ public class Sword : MonoBehaviour, IUsable
     [Header("Inventory")]
     private Inventory inventory;
     [SerializeField] GameObject Player;
-
+    BodyData EnemyBody;
     Animator anim;
     AudioSource PlayerAudio;
     public SwordData currentSword; // ������� ������ ���� ���� �� ������ ���� (Scriptbleobject)
@@ -61,14 +61,16 @@ public class Sword : MonoBehaviour, IUsable
         currentSword = newSword;
         Debug.Log($"���������� ���: {newSword.Name}");
     }
-    private void OnTriggerEnter(Collider other)
+    public void ProcessTrigger(string zoneName,Collider other) 
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy")) 
         {
+            Debug.Log("Враг попал в зону:");
+            EnemyBody = other.GetComponent<BodyData>();
+            if(EnemyBody != null) EnemyBody.TakeDamage(50);
             Destroy(other.gameObject);
         }
-    }
-    public Sprite GetFovSprite() //��� ��������� ������� � ���� � ������� "UseOfItems"
+}    public Sprite GetFovSprite() //��� ��������� ������� � ���� � ������� "UseOfItems"
     {
         return currentSword.FovSprite;
     }
