@@ -1,7 +1,7 @@
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public class PickableItem : MonoBehaviour, IInteractable
+public class PickableObject : MonoBehaviour, IInteractable
 {
     [SerializeField] private ItemData item;
     [SerializeField] private GameObject highlight;
