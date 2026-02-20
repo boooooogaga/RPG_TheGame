@@ -7,18 +7,25 @@ public class MagicPowerScript : MonoBehaviour
     [SerializeField] private GameObject fireBall;
     [SerializeField] private Transform BallSpawnPos;
 
-    [SerializeField] private Sprite MagicArmIdle;      // обычная рука
-    [SerializeField] private Sprite MagicArmAttack;   // рука которая атакует
-    [SerializeField] private Sprite MagicArmCD; //Рука в кд
+    [SerializeField] private Sprite MagicArmIdle;      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+    [SerializeField] private Sprite MagicArmAttack;   // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    [SerializeField] private Sprite MagicArmCD; //пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
 
 
     [SerializeField] private Image MagicArmFov;
     [SerializeField] private GameObject FireBallSprite;
 
+    BodyData body;
+
 
     private float AttackCooldown = 0.3f, OrbCooldown = 5f;
     private bool CanAttack = true;
 
+
+    private void Start()
+    {
+        body = GetComponent<BodyData>();
+    }
     private void Update()
     {
         if (Input.GetMouseButtonDown(1))
@@ -29,7 +36,7 @@ public class MagicPowerScript : MonoBehaviour
 
     private void Attack(GameObject Orb)
     {
-        if (!CanAttack) return;
+        if (!CanAttack || body.CurrentMana <= 0) return;
         StartCoroutine(AttackOrb(Orb));
     }
 
@@ -37,22 +44,24 @@ public class MagicPowerScript : MonoBehaviour
     {
         CanAttack = false;
 
-        // создаем шар
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
         Instantiate(SpawnBallPrefab, BallSpawnPos.position, BallSpawnPos.rotation);
 
-        // включаем руку атаки
+        body.CurrentMana -= 50;
+
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         MagicArmFov.sprite = MagicArmAttack;
         FireBallSprite.SetActive(false);
 
-        // ждем кулдаун
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         yield return new WaitForSeconds(AttackCooldown);
 
-        // возвращаем руку в кд
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ
         MagicArmFov.sprite = MagicArmCD;
 
         yield return new WaitForSeconds(OrbCooldown);
 
-        // возвращаем руку в Idle
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ Idle
 
         MagicArmFov.sprite = MagicArmIdle;
         FireBallSprite.SetActive(true);

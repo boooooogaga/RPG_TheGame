@@ -8,10 +8,12 @@ public class UIControl : MonoBehaviour
     BodyData body;
     Sword sword;
     Inventory inventory;
-    public int HPUpdateSpeed;
+    public int StatsUpdateSpeed;
     [SerializeField] public Image Compass;
     [SerializeField] public Image HPbar;
     [SerializeField] public Image HPbarEffect;
+    [SerializeField] public Image ManaBar;
+    [SerializeField] public Image ManaBarEffect;
     [SerializeField] public GameObject Player;
 
      public GameObject[] InventorySlots = new GameObject[3];
@@ -29,6 +31,7 @@ public class UIControl : MonoBehaviour
         Compass.transform.rotation = Quaternion.Euler(0f, 0f, -playerY);
         InventoryUpdate();
         HPUpdate();
+        ManaUpdate();
     }
     private void InventoryUpdate()
     {
@@ -48,13 +51,24 @@ public class UIControl : MonoBehaviour
     }
     private void HPUpdate()
     {
-        HPbar.transform.localScale = new Vector3(2.5f, (((float)body.CurrenHealth  / (float)body.HPMax ) / 2) * 5, 2.5f);
+        HPbar.transform.localScale = new Vector3(2.5f, (((float)body.CurrentHealth  / (float)body.HPMax ) / 2) , 2.5f);
             Vector3 currentScale = HPbarEffect.transform.localScale;
             float targetY = HPbar.transform.localScale.y;
 
             // плавно меняем только Y
-            currentScale.y = Mathf.Lerp(currentScale.y, targetY, Time.deltaTime * HPUpdateSpeed);
+            currentScale.y = Mathf.Lerp(currentScale.y, targetY, Time.deltaTime * StatsUpdateSpeed);
 
         HPbarEffect.transform.localScale = currentScale;
+    }
+        private void ManaUpdate()
+    {
+        ManaBar.transform.localScale = new Vector3(2.5f, (((float)body.CurrentMana  / (float)body.ManaMax ) / 1.8f) , 2.5f);
+            Vector3 currentManaScale = ManaBarEffect.transform.localScale;
+            float targetY = ManaBar.transform.localScale.y;
+
+            // плавно меняем только Y
+            currentManaScale.y = Mathf.Lerp(currentManaScale.y, targetY, Time.deltaTime * StatsUpdateSpeed);
+
+        ManaBarEffect.transform.localScale = currentManaScale;
     }
 }

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-     private const float gravityScale = 9.8f,
-                  speed = 50f,
-                  turnSpeed = 90f;
-    private float mouseX = 0f, VerticalSpeed = 0f;
+     private const float gravityScale = 9.8f, turnSpeed = 90f;
+    private float mouseX = 0f, VerticalSpeed = 0f ;
+    public float speed;
     BodyData body;
     private CharacterController characterController;
     [SerializeField] Camera GoCamera;

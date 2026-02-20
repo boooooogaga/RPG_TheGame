@@ -23,7 +23,7 @@ public class TriggerProxy : MonoBehaviour
                 Debug.Log($"Нанесено 50 урона объекту: {other.name}");
                 
                 // Если HP упало до 0 — удаляем
-                if(enemyData.CurrenHealth <= 0) 
+                if(enemyData.CurrentHealth <= 0) 
                 {
                     Destroy(other.gameObject);
                 }

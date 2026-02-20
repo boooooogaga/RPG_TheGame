@@ -6,7 +6,10 @@ public class BodyData : MonoBehaviour
 {
     public int HPMax;
     public int TemporaryHealth;
-    public int CurrenHealth;
+    public int CurrentHealth;
+    public int ManaMax;
+    public int TemporaryMana;
+    public int CurrentMana;
     public int Strength;
     public int Dexterity;
     public int Itelligence;
@@ -14,10 +17,15 @@ public class BodyData : MonoBehaviour
 
     public void Start()
     {
-        CurrenHealth = HPMax;
+        CurrentHealth = HPMax;
+        CurrentMana = ManaMax;
     }
     public void TakeDamage(int Damage)
     {
-         CurrenHealth -= Damage;
+         CurrentHealth -= Damage;
+    }
+    public void BurnMana(int Burn)
+    {
+         CurrentMana -= Burn;
     }
 }
