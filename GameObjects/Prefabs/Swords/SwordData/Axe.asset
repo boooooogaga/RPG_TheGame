@@ -25,4 +25,5 @@ MonoBehaviour:
   damage: 0
   attackSpeed: 0
   attackDelay: 0
-  behaviours: []
+  behaviours:
+  - {fileID: 0}

@@ -18,7 +18,7 @@ public class MagicBall : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
+        if(!collision.gameObject.CompareTag("Player")) Destroy(gameObject);
     }
     void LateUpdate()
     {

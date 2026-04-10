@@ -9,7 +9,7 @@ public class Sword : MonoBehaviour, IUsable
     BoxCollider attackCollider;
     [Header("Inventory")]
     private Inventory inventory;
-    [SerializeField] GameObject Player;
+    GameObject Mainer;
     BodyData EnemyBody;
     Animator anim;
     AudioSource PlayerAudio;
@@ -27,6 +27,7 @@ public class Sword : MonoBehaviour, IUsable
         attackCollider.enabled = false;
         inventory = gameObject.GetComponent<Inventory>();
         anim = GetComponent<Animator>();
+        Mainer = gameObject;
     }
     public void Attack() // ������ ������� ������� �������� ��������
     {
@@ -42,7 +43,7 @@ public class Sword : MonoBehaviour, IUsable
         yield return new WaitForSeconds(currentSword.attackDelay);
 
         foreach (var behaviour in currentSword.behaviours)
-            behaviour.OnUsePlayerEffect(Player);
+            behaviour.OnUsePlayerEffect(Mainer);
 
         PlayerAudio.PlayOneShot(currentSword.UsageSound);
         

@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BodyData : MonoBehaviour
 {
-    public int HPMax;
-    public int TemporaryHealth;
-    public int CurrentHealth;
-    public int ManaMax;
-    public int TemporaryMana;
-    public int CurrentMana;
-    public int Strength;
-    public int Dexterity;
-    public int Itelligence;
+    public float HPMax;
+    public float TemporaryHealth;
+    public float CurrentHealth;
+    public float ManaMax;
+    public float TemporaryMana;
+    public float CurrentMana;
+    public float Strength;
+    public float Dexterity;
+    public float Itelligence;
     public int lvl;
 
     public void Start()
@@ -20,11 +20,15 @@ public class BodyData : MonoBehaviour
         CurrentHealth = HPMax;
         CurrentMana = ManaMax;
     }
-    public void TakeDamage(int Damage)
+    public void TakeDamage(float Damage)
     {
          CurrentHealth -= Damage;
+         if (gameObject.tag == "Player")
+         {
+             Camera.main?.GetComponent<CameraBehaviour>()?.CameraShake(0.5f, 0.3f, 1f);
+         }
     }
-    public void BurnMana(int Burn)
+    public void BurnMana(float Burn)
     {
          CurrentMana -= Burn;
     }
