@@ -23,10 +23,6 @@ public class BodyData : MonoBehaviour
     public void TakeDamage(float Damage)
     {
          CurrentHealth -= Damage;
-         if (gameObject.tag == "Player")
-         {
-             Camera.main?.GetComponent<CameraBehaviour>()?.CameraShake(0.5f, 0.3f, 1f);
-         }
     }
     public void BurnMana(float Burn)
     {

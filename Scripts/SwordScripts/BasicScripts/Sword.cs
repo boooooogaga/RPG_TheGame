@@ -7,9 +7,8 @@ public class Sword : MonoBehaviour, IUsable
 {
     public Animator AnimForRightArm;
     BoxCollider attackCollider;
-    [Header("Inventory")]
     private Inventory inventory;
-    GameObject Mainer;
+    public GameObject Mainer;
     BodyData EnemyBody;
     Animator anim;
     AudioSource PlayerAudio;
@@ -25,7 +24,7 @@ public class Sword : MonoBehaviour, IUsable
         PlayerAudio = GetComponent<AudioSource>();
         attackCollider = GetComponentInChildren<BoxCollider>();
         attackCollider.enabled = false;
-        inventory = gameObject.GetComponent<Inventory>();
+        inventory = GetComponent<Inventory>();
         anim = GetComponent<Animator>();
         Mainer = gameObject;
     }
@@ -34,7 +33,7 @@ public class Sword : MonoBehaviour, IUsable
         if (!canAttack) return;
         StartCoroutine(AttackRoutine());
         AnimForRightArm.SetTrigger("Attack");
-}
+    }
 
     private IEnumerator AttackRoutine() // �������� �������� ��� �����
     {
@@ -42,8 +41,8 @@ public class Sword : MonoBehaviour, IUsable
         canSwap = false;
         yield return new WaitForSeconds(currentSword.attackDelay);
 
-        foreach (var behaviour in currentSword.behaviours)
-            behaviour.OnUsePlayerEffect(Mainer);
+      //  foreach (var behaviour in currentSword.behaviours)
+      //      behaviour.OnUsePlayerEffect(Mainer);
 
         PlayerAudio.PlayOneShot(currentSword.UsageSound);
         

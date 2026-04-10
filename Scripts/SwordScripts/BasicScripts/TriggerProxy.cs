@@ -15,10 +15,10 @@ public class TriggerProxy : MonoBehaviour
         // 1. Проверяем, что это точно враг, а не мы сами
             BodyData enemyData = other.GetComponent<BodyData>();
             
-            if(enemyData != null) 
+            if(enemyData != null && other.gameObject != mainScript.gameObject) 
             {
                 enemyData.TakeDamage(mainScript.currentSword.damage);
-                Debug.Log($"Нанесено 50 урона объекту: {other.name}");
+                Debug.Log($"Нанесено {mainScript.currentSword.damage} урона объекту: {other.name}");
                 
                 // Если HP упало до 0 — удаляем
                 if(enemyData.CurrentHealth <= 0) 
